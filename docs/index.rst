@@ -1,4 +1,4 @@
-Turjuman documentation
+Octopus documentation
 =======================
 .. raw:: html
 
