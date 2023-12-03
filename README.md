@@ -1,6 +1,6 @@
 <p align="center">
     <br>
-    <img src="./images/octopus.png"/>
+    <img src="./images/octopus.png" width="50%" hieght="50%"/>
     <br>
 <p>
 
