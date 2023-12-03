@@ -2,10 +2,22 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import pandas as pd
 import torch.nn as nn
 import torch
-from octopus.translation import translate_from_file
+from octopus.generation import generate_from_file
 from octopus.helper import *
 import regex
 class octopus():
+    tasks={
+        "diacritize": "Diartization",
+        "correct_grammar": "Grammatical Error Correction",
+        "paraphrase": "Paraphrase",
+        "answer_question": "Question Answering",
+        "generate_question": "Question Generation",
+        "summarize": "Summarization",
+        "generate_title": "Title Generation",
+        "translitrate_ar2en": "Translitration Arabic-to-English",
+        "translitrate_en2ar": "Translitration English-to-Arabic"
+    }
+    
     def __init__(self, logger, cache_dir, model_path=None):
         self.logger = logger
         self.cache_dir=cache_dir
@@ -14,8 +26,8 @@ class octopus():
     def load_model(self, model_path):
         model_path = model_path if model_path else "UBC-NLP/octopus"
         self.logger.info("Loading model from {}".format(model_path))
-        tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=self.cache_dir)  
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_path, cache_dir=self.cache_dir)
+        tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=self.cache_dir, token="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")  
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_path, cache_dir=self.cache_dir, token="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")
         ##### GPU check ####
         if torch.cuda.is_available():
             device="cuda"
@@ -45,7 +57,7 @@ class octopus():
             validattion_results="valid"
         
         return validattion_results
-    def translate(self, sources, search_method, seq_length=300, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50):
+    def do_generate(self, sources, search_method, seq_length=300, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50):
         encoding = self.tokenizer(sources,padding=True, return_tensors="pt")
         input_ids, attention_masks = encoding["input_ids"], encoding["attention_mask"]
         gen_kwargs = get_gen_kwargs(search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k, self.logger)
@@ -59,43 +71,43 @@ class octopus():
 
         generated_text = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
         
-        return outputs
+        return generated_text
     
     
-    def translate_from_file(self, input_file, search_method, seq_length=300, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50, batch_size=25):
+    def from_file(self, prefix, input_file, search_method, seq_length=300, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50, batch_size=25):
         if self.validate(search_method, max_outputs, num_beams) is None:
             return None
         sources = get_file_content(input_file, self.logger)
         if len(sources)<1:
             self.logger.error("The input file {} is empty".format(input_file))
-        output_file = str(Path(input_file).with_suffix(''))+"_octopus_translate.json"
+        output_file = str(Path(input_file).with_suffix(''))+"_octopus_outputs.json"
         #-- create batches start--#
         
         gen_kwargs = get_gen_kwargs(search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k, self.logger)
-        tf = translate_from_file(self.model, self.tokenizer, self.cache_dir, self.logger)
-        outputs = tf.translate(input_file, batch_size, gen_kwargs)
+        tf = generate_from_file(prefix, self.model, self.tokenizer, self.cache_dir, self.logger)
+        outputs = tf.do_generate(input_file, batch_size, gen_kwargs)
         df = pd.DataFrame.from_dict(outputs)
+        df['task'] = self.tasks[prefix]
         df.to_json(output_file, orient='records', lines=True)
         self.logger.info("The translation are saved on {}".format(output_file))
         
         
 
-    def translate_from_text(self, text, search_method, seq_length=512, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50):
+    def from_text(self, prefix, text, search_method, seq_length=512, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50):
         if self.validate(search_method, max_outputs, num_beams) is None:
             return None
         if len(regex.sub('\s+','',text))<1:
             self.logger.info("Source should be at least 2 characters")
             return None
-        sources = [text]
-        outputs = self.translate(sources, search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k)
-
+        sources = [f"{prefix}: {text}"]
+        outputs = self.do_generate(sources, search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k)
         if max_outputs==1:
-            targets = outputs['target'][0]
+            targets = outputs[0]
         else:
-            targets = outputs[str(max_outputs)+'_targets'][0]
+            targets = outputs
         if type(targets) == list:
             for idx, target in enumerate(targets):
-                 print ("target#{}: {}".format(idx+1, target))
+                 print ("Output#{}: {}".format(idx+1, target))
         else:
-            print ("target: {}".format(targets))
+            print ("Output: {}".format(targets))
 

@@ -30,8 +30,7 @@ setup(name='octopus',
         ],
       entry_points={
             "console_scripts": [
-                "octopus_translate = octopus_cli.translate:translate_cli",
-                "octopus_score = octopus_cli.score:score_cli",
+                "octopus = octopus_cli.generate:generate_cli",
                 "octopus_interactive = octopus_cli.interactive:interactive_cli",
             ],
         },

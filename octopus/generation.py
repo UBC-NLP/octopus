@@ -5,21 +5,22 @@ from transformers import default_data_collator, Seq2SeqTrainer, Seq2SeqTrainingA
 from datasets import load_dataset
 from tqdm import tqdm
 from octopus.helper import *
-class translate_from_file():
-    def __init__(self, model, tokenizer, cache_dir, logger):
+class generate_from_file():
+    def __init__(self, prefix, model, tokenizer, cache_dir, logger):
         self.logger = logger
         self.model=model
         self.tokenizer=tokenizer
         self.cache_dir=cache_dir
         self.data_collator = default_data_collator
         self.accelerator = Accelerator()
+        self.prefix=prefix
         self.gen_kwargs=None
 
 
 
     
     def preprocess_function(self, examples):
-        input = [ex for ex in examples["text"]]
+        input = [f"{self.prefix}: {ex}" for ex in examples["text"]]
         model_inputs = self.tokenizer(input, max_length=self.gen_kwargs['max_length'], padding=True, truncation=True)
         return model_inputs
 
@@ -34,13 +35,13 @@ class translate_from_file():
             )
         return processed_datasets["source"]
     
-    def translate(self, filepath, batch_size, gen_kwargs):
+    def do_generate(self, filepath, batch_size, gen_kwargs):
         self.gen_kwargs = gen_kwargs
         sources=self.get_file_data(filepath)
         generated_text=[]
         sources_dataloader = DataLoader(sources, collate_fn=self.data_collator, batch_size=batch_size)
         device = ('cuda' if torch.cuda.is_available() else 'cpu')
-        self.logger.info(">>>>>Working on {}".format(device))
+        self.logger.info("Working on {}".format(device))
         self.model.eval()
         samples_seen = 0
         num_batches = len(sources_dataloader)

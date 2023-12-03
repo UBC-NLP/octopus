@@ -29,15 +29,29 @@ def interactive_cli():
     #-------------------------
 
     logger.info(args)
-    torj = octopus(logger, "./octopus_cache")
+    oct_inter = octopus(logger, "./octopus_cache")
+    tasks_str=""
+    for idx, task in enumerate(oct_inter.tasks):
+        tasks_str+=f"Prefix: [{task}] Task Name: {oct_inter.tasks[task]}\n"
+    logger.info(f"Loading tasks\n{'-'*50}\nOCTOPUS's tasks:\n{'-'*50}\n{tasks_str}")
+
     source=""
     while source !='q':
-        source = input("Type your source text or (q) to STOP: ")
+        source = input("Type your <task_prefix> followed by <text> or (q) to STOP: ")
         if source !='q':
             if len(regex.sub('\s+','',source))<1:
                 logger.info("Source should be at least 2 characters")
                 continue
-            torj.translate_from_text (source, search_method="beam")
+            l = source.split()
+            try:
+                task_prefix = regex.sub(":","",l[0])
+                task_name = oct_inter.tasks[task_prefix]
+            except:
+                logger.error("Couldn't recognize the task_preix. Please write the task ID, followed by your text as follow:\n diacritize: this is my text.")
+                continue
+            source = f"{' '.join(l[1:])}"
+            logger.info(f"Task: {task_name}")
+            oct_inter.from_text (task_prefix, source, search_method="beam")
 
 
 

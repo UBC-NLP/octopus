@@ -22,8 +22,9 @@ logger = logging.getLogger("octopus.translate_cli")
 
 def get_parser():
     parser = argparse.ArgumentParser(
-        description="Octopus Translate Command Line Interface (CLI)"
+        description="Octopus Command Line Interface (CLI)"
     )
+    parser.add_argument('-x', '--prefix', type=str, required=True, help="task prefix [’diacritize’,’correct_grammar’, ’paraphrase’,’answer_question’,’generate_question’,’summarize’,’generate_title’, ’translitrate_ar2en’,’translitrate_en2ar’]")
     parser.add_argument('-t', '--text', type=str, help='translate the input text into Arabic')
     parser.add_argument('-f', '--input_file', type=str, help='path of input file')
     parser.add_argument('-m', '--search_method', type=str, default='beam', help="decoding method [‘greedy’, ‘beam’, ‘sampling’] , default value is beam search")
@@ -39,7 +40,7 @@ def get_parser():
     return parser
 
 
-def translate_cli():
+def generate_cli():
     search_methods = ['greedy', 'beam', 'sampling']
     parser = get_parser()
     args = parser.parse_args()
@@ -56,29 +57,36 @@ def translate_cli():
         return None
    
     input_source=None
+    oct_inter = octopus(logger, args.cache_dir)
+    if args.prefix is not None:
+        try:
+                task_name = oct_inter.tasks[args.prefix]
+        except:
+                logger.error("Couldn't recognize the task_preix. Task prefix should be one of follows: [’diacritize’,’correct_grammar’, ’paraphrase’,’answer_question’,’generate_question’,’summarize’,’generate_title’, ’translitrate_ar2en’,’translitrate_en2ar’]")
+                return None
     if args.text is not None and args.input_file is None:
-        logger.info("Translate from input sentence")
+        logger.info(f"Task: {task_name} Method: Input Text")
         input_source="text"
     elif args.input_file is not None and args.text is None:
         if Path(args.input_file).is_file():
-            logger.info("Translate from input file {}".format(args.input_file))
+            logger.info(f"Task: {task_name} Method: Input File {args.input_file}")
             input_source="file"
         else:
-            logger.info("[Error] Can't open the input file {}".format(args.input_file))
+            logger.error("Can't open the input file {}".format(args.input_file))
             return None
     else:
-        logger.info("[Error] You chould use one of the following options to input the source: `--text` or `--input_file`")
+        logger.error("You chould use one of the following options to input the source: `--text` or `--input_file`")
         return None
     
 
-    torj = octopus(logger, args.cache_dir)
+    
     if input_source=="text":
-        torj.translate_from_text (args.text, args.search_method, args.seq_length, args.max_outputs, args.num_beams, args.no_repeat_ngram_size, args.top_p, args.top_k)
+        oct_inter.from_text (args.prefix, args.text, args.search_method, args.seq_length, args.max_outputs, args.num_beams, args.no_repeat_ngram_size, args.top_p, args.top_k)
     elif input_source=="file":
-        torj.translate_from_file (args.input_file, args.search_method, args.seq_length, args.max_outputs, args.num_beams, args.no_repeat_ngram_size, args.top_p, args.top_k, args.batch_size)
+        oct_inter.from_file (args.prefix, args.input_file, args.search_method, args.seq_length, args.max_outputs, args.num_beams, args.no_repeat_ngram_size, args.top_p, args.top_k, args.batch_size)
 
 
 
 
 if __name__ == "__main__":
-    translate_cli()
+    generate_cli()
