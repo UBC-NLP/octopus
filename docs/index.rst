@@ -4,13 +4,13 @@ Turjuman documentation
 
    <p align="center">
     <br>
-    <img src="./images/octopus.jpg" width="70%" height="70%"/>
+    <img src="https://github.com/UBC-NLP/octopus/raw/main/images/octopus.jpg" width="70%" height="70%"/>
     <br>
    <p>
 
 .. raw:: html
 
-   <img src="./images/octopus_tasks.png" alt="OCTOPUS" width="55%" height="55%" align="right"/>
+   <img src="https://github.com/UBC-NLP/octopus/raw/mainimages/octopus_tasks.png" alt="OCTOPUS" width="55%" height="55%" align="right"/>
 
 
 
