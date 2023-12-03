@@ -1,3 +1,0 @@
-[console_scripts]
-octopus = octopus_cli.generate:generate_cli
-octopus_interactive = octopus_cli.interactive:interactive_cli
