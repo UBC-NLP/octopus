@@ -1,6 +1,6 @@
 <p align="center">
     <br>
-    <img src="./images/octopus.jpg" width="55%" height="55%"/>
+    <img src="./images/octopus.jpg" width="70%" height="70%"/>
     <br>
 <p>
 
@@ -22,7 +22,9 @@
 
 <img src="./images/octopus_tasks.png" alt="OCTOPUS" width="55%" height="55%" align="right"/>
 
-Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG) that described in our ArabiNLP 2023 paper: [**OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation**](https://arxiv.org/abs/2310.16127v1). Octopus designed for eight machine generation tasks, encompassing diacritization, grammatical error correction, news headlines generation, paraphrasing, question answering, question generation, and
+Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG) that described in our ArabiNLP 2023 paper: [**OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation**](https://arxiv.org/abs/2310.16127v1). 
+
+Octopus designed for eight machine generation tasks, encompassing diacritization, grammatical error correction, news headlines generation, paraphrasing, question answering, question generation, and
 transliteration. This comprehensive package includes a Python library along with associated command-line scripts.
 
 <br>
