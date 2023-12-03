@@ -1,6 +1,6 @@
 <p align="center">
     <br>
-    <img src="./images/octopus_logo.png"/>
+    <img src="./images/octopus.png"/>
     <br>
 <p>
 
