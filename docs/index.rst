@@ -10,7 +10,7 @@ Turjuman documentation
 
 .. raw:: html
 
-   <img src="https://github.com/UBC-NLP/octopus/raw/mainimages/octopus_tasks.png" alt="OCTOPUS" width="55%" height="55%" align="right"/>
+   <img src="https://github.com/UBC-NLP/octopus/raw/main/images/octopus_tasks.png" alt="OCTOPUS" width="55%" height="55%" align="right"/>
 
 
 
