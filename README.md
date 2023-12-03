@@ -22,7 +22,7 @@
 
 <img src="./images/turjuman.png" alt="AraT5" width="55%" height="55%" align="right"/>
 
-Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG). that described in our ArabiNLP 2023 paper: [**OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation**](https://arxiv.org/abs/2310.16127v1).
+Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG) that described in our ArabiNLP 2023 paper: [**OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation**](https://arxiv.org/abs/2310.16127v1).
 
 
 <br>
@@ -39,7 +39,7 @@ Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Gener
 - To install octopus and develop locally:
 ```shell
     git clone https://github.com/UBC-NLP/octopus.git
-    cd turjuman
+    cd octopus
     pip install .
 ```
 ## Getting Started

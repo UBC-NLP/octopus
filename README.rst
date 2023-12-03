@@ -1,4 +1,4 @@
-Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG). that described in our ArabiNLP 2023 paper "OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation".
+Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG) that described in our ArabiNLP 2023 paper "OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation".
 
 
 GitHub link: `https://github.com/UBC-NLP/octopus <https://github.com/UBC-NLP/octopus>`__
