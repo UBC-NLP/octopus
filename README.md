@@ -1,21 +1,21 @@
 <p align="center">
     <br>
-    <img src="./images/turjuman_logo.png"/>
+    <img src="./images/octopus_logo.png"/>
     <br>
 <p>
 
 <p align="center">
-<a href="https://github.com/UBC-NLP/turjuman/releases">
-        <img alt="GitHub release" src="https://img.shields.io/github/release/UBC-NLP/turjuman.svg">
+<a href="https://github.com/UBC-NLP/octopus/releases">
+        <img alt="GitHub release" src="https://img.shields.io/github/release/UBC-NLP/octopus.svg">
     </a>
 
-<a href="https://demos.dlnlp.ai/turjuman">
-        <img alt="Documentation" src="https://img.shields.io/website.svg?down_color=red&down_message=offline&up_message=online&url=https://demos.dlnlp.ai/turjuman">
+<a href="https://demos.dlnlp.ai/octopus">
+        <img alt="Documentation" src="https://img.shields.io/website.svg?down_color=red&down_message=offline&up_message=online&url=https://demos.dlnlp.ai/octopus">
     </a>
-<a href="https://github.com/UBC-NLP/turjuman/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/UBC-NLP/turjuman?logoColor=blue"></a>
-<a href='https://turjuman.readthedocs.io/en/latest/?badge=latest'><img src='https://readthedocs.org/projects/turjuman/badge/?version=latest' alt='Documentation Status' /></a>
-<a href="https://github.com/UBC-NLP/turjuman/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/UBC-NLP/turjuman"></a>
-<a href="https://github.com/UBC-NLP/turjuman/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/UBC-NLP/turjuman"></a>
+<a href="https://github.com/UBC-NLP/octopus/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/UBC-NLP/octopus?logoColor=blue"></a>
+<a href='https://octopus.readthedocs.io/en/latest/?badge=latest'><img src='https://readthedocs.org/projects/octopus/badge/?version=latest' alt='Documentation Status' /></a>
+<a href="https://github.com/UBC-NLP/octopus/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/UBC-NLP/octopus"></a>
+<a href="https://github.com/UBC-NLP/octopus/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/UBC-NLP/octopus"></a>
 
 </p>
  
