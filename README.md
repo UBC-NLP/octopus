@@ -1,6 +1,6 @@
 <p align="center">
     <br>
-    <img src="./images/octopus.png" width="50%" hieght="50%"/>
+    <img src="./images/octopus.jpg"/>
     <br>
 <p>
 
@@ -20,7 +20,7 @@
 </p>
  
 
-<img src="./images/turjuman.png" alt="AraT5" width="55%" height="55%" align="right"/>
+<img src="./images/octopus_tasks.png" alt="AraT5" width="55%" height="55%" align="right"/>
 
 Octopus is a neural machine generation toolkit for Arabic Natural Lnagauge Generation (NLG) that described in our ArabiNLP 2023 paper: [**OCTOPUS: A Multitask Model and Toolkit for Arabic Natural Language Generation**](https://arxiv.org/abs/2310.16127v1).
 
