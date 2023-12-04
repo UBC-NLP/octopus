@@ -63,7 +63,7 @@ class octopus():
         encoding = self.tokenizer(sources,padding=True, return_tensors="pt")
         input_ids, attention_masks = encoding["input_ids"], encoding["attention_mask"]
         gen_kwargs = get_gen_kwargs(search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k, self.logger)
-
+        self.logger.info("Add input to {}".format(self.device_ids))
         outputs = self.model.generate(
                         input_ids=input_ids.to(self.device), 
                         attention_mask=attention_masks,
