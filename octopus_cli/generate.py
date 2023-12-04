@@ -34,7 +34,7 @@ def get_parser():
     parser.add_argument('-n', '--no_repeat_ngram_size', default=2, type=int, help='ngram size cannot be repeated in the generation, default vlaue is 2')
     parser.add_argument('-k', '--top_k', default=50, type=int, help='sampling using top-k, default vlaue is 50')
     parser.add_argument('-p', '--top_p', default=0.95, type=float, help='sampling using top-p, default vlaue is 0.95')
-    parser.add_argument('-c', '--cache_dir', default="./octopus_cache", type=str, help='path of the cache directory, default vlaue is turjuman_cache directory')
+    parser.add_argument('-c', '--cache_dir', default="./octopus_cache", type=str, help='path of the cache directory, default vlaue is octopus_cache directory')
     parser.add_argument('-l', '--logging_file', default=None, type=str, help='the logging file path, default vlaue is None')
     parser.add_argument('-bs', '--batch_size', default=25, type=int, help='the number of sentences translated in one iteration')
     return parser

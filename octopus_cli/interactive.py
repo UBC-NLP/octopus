@@ -16,7 +16,7 @@ def get_parser():
     parser = argparse.ArgumentParser(
         description="octopus Interactive CLI"
     )
-    parser.add_argument('-c', '--cache_dir', default="./octopus_cache", type=str, help='The cache directory path, default vlaue is turjuman_cache directory')
+    parser.add_argument('-c', '--cache_dir', default="./octopus_cache", type=str, help='The cache directory path, default vlaue is octopus_cache directory')
 
 
     return parser

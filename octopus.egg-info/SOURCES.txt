@@ -1,0 +1,16 @@
+README.rst
+setup.py
+octopus/__init__.py
+octopus/copyright.py
+octopus/generation.py
+octopus/helper.py
+octopus/octopus.py
+octopus.egg-info/PKG-INFO
+octopus.egg-info/SOURCES.txt
+octopus.egg-info/dependency_links.txt
+octopus.egg-info/entry_points.txt
+octopus.egg-info/requires.txt
+octopus.egg-info/top_level.txt
+octopus_cli/__init__.py
+octopus_cli/generate.py
+octopus_cli/interactive.py
