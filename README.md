@@ -49,10 +49,54 @@ The [full documentation](https://octopus.readthedocs.io/en/latest/) contains ins
 
 ## Colab Examples
 ### (1) Command Line Interface
+<table style='border:1px red;' width='100%'>
+<tr><td><b>Command</b></td><td> <b>Content</b></td><td><b>Colab link</b></td></tr>
+<tr>
+<td>octopus</td>
+<td>
+    <ul>
+        <li> Usage and Arguments </li>
+        <li> Using greedy search</li>
+        <li> Using beam search (default)</li>
+        <li> Using sampling search</li>
+        <li> Read text from file</li>
+    </ul>
+</td>
+<td>
+<a href="https://colab.research.google.com/github/UBC-NLP/octopus/blob/main/examples/octopus_cli.ipynb"><img alt="colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 
+ </td>
+</tr>
+<tr>
+<td>octopus_interactive</td>
+<td>
+    <ul>
+        <li> Usage and Arguments </li>
+        <li> Examples</li>
+    </ul>
+</td>
+<td> <a href="https://colab.research.google.com/github/UBC-NLP/octopus/blob/main/examples/octopus_interactive_cli.ipynb"><img alt="colab" src="https://colab.research.google.com/assets/colab-badge.svg"></td>
+</tr>
+
+</table>
 
 ### (2) Integrate Octopus with your python code
-
+<table style='border:1px red;' width='100%'>
+<tr><td><b>Functions</b></td><td> <b>Content</b></td><td><b>Colab link</b></td></tr>
+<td>generate <br> generate_from_file</td>
+<td>
+    <ul>
+        <li> Install Octopus </li>
+        <li> Initial octopus object </li>
+        <li> Using greedy search</li>
+        <li> Using beam search (default)</li>
+        <li> Using sampling search</li>
+        <li> Read text from file</li>
+    </ul>
+</td>
+<td> <a href="https://colab.research.google.com/github/UBC-NLP/octopus/blob/main/examples/Integrate_octopus_with_your_code.ipynb"><img alt="colab" src="https://colab.research.google.com/assets/colab-badge.svg"></td>
+</tr>
+</table>
 
 ## License
 octopus(-py) is Apache-2.0 licensed. The license applies to the pre-trained models as well.
