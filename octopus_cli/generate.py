@@ -16,7 +16,7 @@ logging.basicConfig(
     level=os.environ.get("LOGLEVEL", "INFO").upper(),
     stream=sys.stdout,
 )
-logger = logging.getLogger("octopus.translate_cli")
+logger = logging.getLogger("octopus_cli")
 
 
 
