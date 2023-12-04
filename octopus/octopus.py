@@ -22,7 +22,6 @@ class octopus():
         self.logger = logger
         self.cache_dir=cache_dir
         self.model, self.tokenizer = self.load_model(model_path)
-        self.device='cpu'
 
     def load_model(self, model_path):
         model_path = model_path if model_path else "UBC-NLP/octopus"
@@ -46,7 +45,6 @@ class octopus():
             device="cpu"
             self.logger.info("Run the model with CPU")
             model = model
-        self.device = device
         return model, tokenizer
     
     def validate(self, search_method, max_outputs, num_beams):
@@ -60,10 +58,13 @@ class octopus():
         
         return validattion_results
     def do_generate(self, sources, search_method, seq_length=300, max_outputs=1, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, top_k=50):
+        device="cpu"
+        if torch.cuda.is_available():
+            device="cuda"
         encoding = self.tokenizer(sources,padding=True, return_tensors="pt")
         input_ids, attention_masks = encoding["input_ids"], encoding["attention_mask"]
         gen_kwargs = get_gen_kwargs(search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k, self.logger)
-        self.logger.info("Add input to {}".format(self.device))
+        self.logger.info("Add input to {}".format(device))
         outputs = self.model.generate(
                         input_ids=input_ids.to(self.device), 
                         attention_mask=attention_masks,
