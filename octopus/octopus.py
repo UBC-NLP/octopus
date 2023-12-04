@@ -69,7 +69,7 @@ class octopus():
                         attention_mask=attention_masks,
                         **gen_kwargs,
                     )
-     
+    
 
         generated_text = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
         
