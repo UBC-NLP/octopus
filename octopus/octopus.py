@@ -22,6 +22,7 @@ class octopus():
         self.logger = logger
         self.cache_dir=cache_dir
         self.model, self.tokenizer = self.load_model(model_path)
+        self.device='cpu'
 
     def load_model(self, model_path):
         model_path = model_path if model_path else "UBC-NLP/octopus"
@@ -45,6 +46,7 @@ class octopus():
             device="cpu"
             self.logger.info("Run the model with CPU")
             model = model
+        self.device = device
         return model, tokenizer
     
     def validate(self, search_method, max_outputs, num_beams):
@@ -63,7 +65,7 @@ class octopus():
         gen_kwargs = get_gen_kwargs(search_method, seq_length, max_outputs, num_beams, no_repeat_ngram_size, top_p, top_k, self.logger)
 
         outputs = self.model.generate(
-                        input_ids=input_ids, 
+                        input_ids=input_ids.to(self.device), 
                         attention_mask=attention_masks,
                         **gen_kwargs,
                     )
