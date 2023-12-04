@@ -13,7 +13,7 @@
         <img alt="Documentation" src="https://img.shields.io/website.svg?down_color=red&down_message=offline&up_message=online&url=https://demos.dlnlp.ai/octopus">
     </a>
 <a href="https://github.com/UBC-NLP/octopus/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/UBC-NLP/octopus?logoColor=blue"></a>
-<a href='https://octopus.readthedocs.io/en/latest/?badge=latest'><img src='https://readthedocs.org/projects/octopus/badge/?version=latest' alt='Documentation Status' /></a>
+<a href='https://octopus-benchmark.readthedocs.io/en/latest/?badge=latest'><img src='https://readthedocs.org/projects/octopus-benchmark/badge/?version=latest' alt='Documentation Status' /></a>
 <a href="https://github.com/UBC-NLP/octopus/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/UBC-NLP/octopus"></a>
 <a href="https://github.com/UBC-NLP/octopus/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/UBC-NLP/octopus"></a>
 
