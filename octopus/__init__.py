@@ -1,5 +1,5 @@
 
-from octopus.octopus import *
+# from octopus.octopus import *
 from octopus.copyright import *
 __author__ = author
 __copyright__ = copyright

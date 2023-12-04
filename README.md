@@ -30,10 +30,7 @@ transliteration. This comprehensive package includes a Python library along with
 <br>
 
 ## Requirements and Installation
-- To install octopus and develop directly using pip:
-```shell
-    pip install -U octopus
-```
+
 - To install octopus and develop directly GitHub repo using pip:
 ```shell
     pip install -U git+https://github.com/UBC-NLP/octopus.git

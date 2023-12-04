@@ -1,2 +1,0 @@
-octopus
-octopus_cli
