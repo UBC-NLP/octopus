@@ -26,8 +26,8 @@ class octopus():
     def load_model(self, model_path):
         model_path = model_path if model_path else "UBC-NLP/octopus"
         self.logger.info("Loading model from {}".format(model_path))
-        tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=self.cache_dir, token="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")  
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_path, cache_dir=self.cache_dir, token="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")
+        tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=self.cache_dir)  
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_path, cache_dir=self.cache_dir)
         ##### GPU check ####
         if torch.cuda.is_available():
             device="cuda"
